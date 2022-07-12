@@ -5,24 +5,21 @@ import { Sidebar } from './components/Sidebar'
 
 import { Home } from './pages/Home'
 
-import './styles/global.scss'
-import './styles/utilities.scss'
-
 export function App() {
 	return (
 		<BrowserRouter>
-			<Header />
+			<div className="flex flex-col min-h-screen">
+				<Header />
 
-			<div className='wrapper'>
-				<main>
+				<main className="flex flex-1">
 					<Routes>
 						<Route path='/' element={<Home />} />
 
 						<Route path='*' element={<p>página não encontrada</p>} />
 					</Routes>
-				</main>
 
-				<Sidebar />
+					<Sidebar />
+				</main>
 			</div>
 		</BrowserRouter>
 	)

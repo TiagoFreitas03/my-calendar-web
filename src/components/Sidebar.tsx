@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import '../styles/sidebar.scss'
+import '../styles/sidebar.css'
 
 export function Sidebar() {
 	function closeSidebar() {
@@ -11,18 +11,32 @@ export function Sidebar() {
 	}
 
 	return (
-		<aside className="sidebar-container" id='sidebar'>
+		<aside
+			className={
+				[
+					"fixed h-screen max-w-[360px] w-[80vw] top-0 right-0 mr-[-80vw] py-6 px-5 transition-all",
+					"bg-gray-700 border-l-2 border-gray-600 text-center flex flex-col justify-between"
+				].join(' ')
+			}
+			id='sidebar'
+		>
 			<header>
-				<i className='fa-solid fa-times fa-2x' onClick={closeSidebar} />
-				<h3>Bem-vindx ao<br />MyCalendar</h3>
+				<i
+					className='fa-solid fa-times fa-2x absolute top-8 right-8 cursor-pointer'
+					onClick={closeSidebar}
+				/>
+				<h3 className='leading-7 text-2xl'>
+					Bem-vindx ao<br />MyCalendar
+				</h3>
 			</header>
 
 			<div>
-				<Link to='/login' className='bg-blue'>Entrar</Link>
-				<Link to='/register' className='bg-purple'>Cadastre-se</Link>
+				<Link to='/login' className='bg-blue-500 hover:bg-blue-600'>Entrar</Link>
+
+				<Link to='/register' className='bg-purple-500 hover:bg-purple-600'>Cadastre-se</Link>
 			</div>
 
-			<footer>
+			<footer className='mb-3'>
 				<p>&copy; 2022 MyCalendar</p>
 			</footer>
 		</aside>

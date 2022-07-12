@@ -1,12 +1,8 @@
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale'
+import { Link } from 'react-router-dom'
 
 import logo from '../images/logo.svg'
-import '../styles/header.scss'
 
 export function Header() {
-	const currentDate = format(new Date(), 'EEEEEE, d MMMM', { locale: ptBR })
-
 	function openSidebar() {
 		const sidebar = document.getElementById('sidebar')
 
@@ -15,14 +11,19 @@ export function Header() {
 	}
 
 	return (
-		<header className="header-container">
-			<img src={logo} alt="MyCalendar" />
+		<header className="bg-gray-700 w-full h-24 flex items-center px-8 py-4 border-gray-600 border-b-2">
+			<Link to='/'>
+				<img src={logo} alt="MyCalendar" className='w-60' />
+			</Link>
 
-			<p>Para uma vida mais organizada</p>
+			<p className='ml-6 py-1 pl-6 border-l border-gray-300 sm:block hidden'>
+				Para uma vida mais organizada
+			</p>
 
-			<span>{ currentDate }</span>
-
-			<i className='fa-solid fa-bars' onClick={openSidebar} />
+			<i
+				className='fa-solid fa-bars ml-auto cursor-pointer text-2xl'
+				onClick={openSidebar}
+			/>
 		</header>
 	)
 }

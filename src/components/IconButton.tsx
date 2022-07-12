@@ -1,6 +1,6 @@
 import { ButtonHTMLAttributes } from 'react'
 
-import '../styles/icon-button.scss'
+//import '../styles/icon-button.css'
 
 interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 	icon: string
@@ -10,7 +10,9 @@ interface IconButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 export function IconButton({ icon, color, ...rest }: IconButtonProps) {
 	return (
 		<button
-			className={`icon-button bg-${color}`}
+			className={
+				`w-12 h-12 rounded-lg mx-1 icon-button bg-${color}-500 hover:bg-${color}-600 transition-colors`
+			}
 			{...rest}
 		>
 			<i className={`fa-solid fa-${icon}`} />

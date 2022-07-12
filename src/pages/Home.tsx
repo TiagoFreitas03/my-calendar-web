@@ -3,7 +3,7 @@ import { format, sub, add } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import { IconButton } from "../components/IconButton"
-import '../styles/home.scss'
+//import '../styles/home.css'
 
 const WEEK_DAYS = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB']
 
@@ -37,14 +37,16 @@ export function Home() {
 	}, [date])
 
 	return (
-		<div className='home-container'>
-			<header>
+		<div className='max-w-5xl w-full mx-auto p-4'>
+			<header className='flex justify-between items-center'>
 				<div>
 					<IconButton icon="angles-left" color="blue" onClick={decrementYear} />
 					<IconButton icon="angle-left" color="purple" onClick={decrementMonth} />
 				</div>
 
-				<h2>{format(date, 'MMMM yyyy', { locale: ptBR })}</h2>
+				<h2 className='capitalize'>
+					{format(date, 'MMMM yyyy', { locale: ptBR })}
+				</h2>
 
 				<div>
 					<IconButton icon="angle-right" color="purple" onClick={incrementMonth} />
@@ -52,10 +54,17 @@ export function Home() {
 				</div>
 			</header>
 
-			<table>
+			<table className='w-full mt-8 border-collapse text-lg text-center'>
 				<thead>
 					<tr>
-						{WEEK_DAYS.map(day => <th key={day}>{day}</th>)}
+						{WEEK_DAYS.map(day => {
+							return (
+								<th
+									className='bg-gray-700 border-2 border-gray-600 p-3'
+									key={day}
+								>{day}</th>
+							)
+						})}
 					</tr>
 				</thead>
 
@@ -63,7 +72,17 @@ export function Home() {
 					{month_days.map((week, i) => {
 						return (
 							<tr key={i}>
-								{week.map((day, j) => <td key={j}>{day}</td>)}
+								{week.map((day, j) => {
+									return (
+										<td
+											style={{
+												cursor: day !== '' ? 'pointer' : 'default'
+											}}
+											className='border-2 border-gray-700 py-6'
+											key={j}
+										>{day}</td>
+									)
+								})}
 							</tr>
 						)
 					})}
