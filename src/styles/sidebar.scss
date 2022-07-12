@@ -1,5 +1,4 @@
 .sidebar-container {
-	position: fixed;
 	height: calc(100vh - 6rem);
 	width: 360px;
 	right: 0;
@@ -25,7 +24,7 @@
 		font-size: 24px;
 	}
 
-	main {
+	div {
 		a {
 			font-family: Nunito, sans-serif;
 			display: block;

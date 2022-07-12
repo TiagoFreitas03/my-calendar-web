@@ -17,10 +17,10 @@ export function Sidebar() {
 				<h3>Bem-vindx ao<br />MyCalendar</h3>
 			</header>
 
-			<main>
+			<div>
 				<Link to='/login' className='bg-blue'>Entrar</Link>
 				<Link to='/register' className='bg-purple'>Cadastre-se</Link>
-			</main>
+			</div>
 
 			<footer>
 				<p>&copy; 2022 MyCalendar</p>
