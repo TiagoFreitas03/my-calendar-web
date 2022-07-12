@@ -19,11 +19,11 @@
 	--purple: #8338EC;
 	--blue: #3A86FF;
 
-	--light-yellow: #FFCF1C;
-	--light-orange: #FC6718;
-	--light-pink: #FF117F;
-	--light-purple: #9449FD;
-	--light-blue: #4B97FF;
+	--dark-yellow: #EEAD0A;
+	--dark-orange: #EA4506;
+	--dark-pink: #EE005D;
+	--dark-purple: #7227DB;
+	--dark-blue: #2975EE;
 }
 
 @media (max-width: 1080px) {
@@ -63,4 +63,8 @@ h2 {
 
 button {
   cursor: pointer;
+}
+
+.wrapper {
+  display: flex;
 }

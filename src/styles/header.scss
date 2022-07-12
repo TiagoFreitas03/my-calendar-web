@@ -17,12 +17,35 @@
     margin-left: auto;
     text-transform: capitalize;
   }
+
+	i {
+		display: none;
+		margin-left: auto;
+		cursor: pointer;
+		font-size: 24px;
+	}
 }
 
-@media (max-width: 720px) {
+@media (max-width: 1024px) {
+  .header-container {
+    span {
+			display: none;
+		}
+
+		i {
+			display: block;
+		}
+  }
+}
+
+@media (max-width: 600px) {
   .header-container {
     p {
 			display: none;
+		}
+
+		img {
+			width: 200px;
 		}
   }
 }
