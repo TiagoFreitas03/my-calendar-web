@@ -1,0 +1,39 @@
+.home-container {
+	max-width: 1440px;
+	margin: auto;
+
+	header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h2 {
+			text-transform: capitalize;
+		}
+	}
+
+	table {
+		width: 100%;
+		margin-top: 32px;
+		border-collapse: collapse;
+		font-size: 18px;
+		text-align: center;
+
+		th {
+			background: var(--gray-700);
+			border: 2px solid var(--gray-600);
+			padding: 12px;
+		}
+
+		td {
+			border: 2px solid var(--gray-700);
+			padding: 24px 12px;
+		}
+	}
+}
+
+// @media (max-width: 1024px) {
+//   .home-container {
+// 		max-width: 1024px;
+//   }
+// }
