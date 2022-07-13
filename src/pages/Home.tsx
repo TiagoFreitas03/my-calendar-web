@@ -3,27 +3,31 @@ import { format, sub, add } from 'date-fns'
 import { ptBR } from 'date-fns/locale'
 
 import { IconButton } from "../components/IconButton"
-//import '../styles/home.css'
+import { SpecialDates } from '../components/SpecialDates'
 
 const WEEK_DAYS = ['DOM', 'SEG', 'TER', 'QUA', 'QUI', 'SEX', 'SAB']
 
 export function Home() {
 	const [date, setDate] = useState(new Date())
 
+	const month = date.getMonth()
+	const year = date.getFullYear()
+
 	const decrementYear = () => setDate(sub(date, { years: 1 }))
 	const decrementMonth = () => setDate(sub(date, { months: 1 }))
 	const incrementMonth = () => setDate(add(date, { months: 1 }))
 	const incrementYear = () => setDate(add(date, { years: 1 }))
 
-	const month_days = useMemo(() => {
+	const monthDays = useMemo(() => {
 		const days: string[][] = [[]]
 
-		while (days[0].length < date.getDay())
+		const firstDay = new Date(year, month, 1)
+		const lastDay = new Date(year, month + 1, 0).getDate()
+
+		while (days[0].length < firstDay.getDay())
 			days[0].push('')
 
-		const finalDay = new Date(date.getFullYear(), date.getMonth() + 1, 0).getDate()
-
-		for (let i = 1; i <= finalDay; i++) {
+		for (let i = 1; i <= lastDay; i++) {
 			days[days.length - 1].push(i.toString())
 
 			if (days[days.length - 1].length === 7)
@@ -35,6 +39,27 @@ export function Home() {
 
 		return days
 	}, [date])
+
+	const isToday = (day: string) => {
+		const today = new Date()
+		const [d, m, y] = [today.getDate(), today.getMonth(), today.getFullYear()]
+
+		return day === d.toString() && month === m && year === y
+	}
+
+	const getBackgroundColor = (day: string) => {
+		if (isToday(day))
+			return '#FFBE0B'
+
+		return '#09090A'
+	}
+
+	const getTextColor = (day: string) => {
+		if (isToday(day))
+			return '#09090A'
+
+		return '#E1E1E6'
+	}
 
 	return (
 		<div className='max-w-5xl w-full mx-auto p-4'>
@@ -69,16 +94,18 @@ export function Home() {
 				</thead>
 
 				<tbody>
-					{month_days.map((week, i) => {
+					{monthDays.map((week, i) => {
 						return (
 							<tr key={i}>
 								{week.map((day, j) => {
 									return (
 										<td
 											style={{
-												cursor: day !== '' ? 'pointer' : 'default'
+												cursor: day !== '' ? 'pointer' : 'default',
+												background: getBackgroundColor(day),
+												color: getTextColor(day)
 											}}
-											className='border-2 border-gray-700 py-6'
+											className='border-2 border-gray-700 py-6 font-semibold'
 											key={j}
 										>{day}</td>
 									)
@@ -88,6 +115,8 @@ export function Home() {
 					})}
 				</tbody>
 			</table>
+
+			<SpecialDates month={month} year={year} />
 		</div>
 	)
 }
