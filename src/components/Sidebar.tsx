@@ -2,28 +2,23 @@ import { Link } from 'react-router-dom'
 
 import '../styles/sidebar.css'
 
-export function Sidebar() {
-	function closeSidebar() {
-		const sidebar = document.getElementById('sidebar')
+interface SidebarProps {
+	onClose: () => void
+}
 
-		if (sidebar)
-			sidebar.classList.remove('toggled')
-	}
-
+export function Sidebar({ onClose }: SidebarProps) {
 	return (
 		<aside
 			className={
-				[
-					"fixed h-screen max-w-[360px] w-[80vw] top-0 right-0 mr-[-80vw] py-6 px-5 transition-all",
-					"bg-gray-700 border-l-2 border-gray-600 text-center flex flex-col justify-between"
-				].join(' ')
+				"fixed h-screen max-w-[360px] w-[80vw] top-0 right-0 mr-[-80vw] py-6 px-5 transition-all" +
+				" bg-gray-700 border-l-2 border-gray-600 text-center flex flex-col justify-between"
 			}
 			id='sidebar'
 		>
 			<header>
 				<i
 					className='fa-solid fa-times fa-2x absolute top-8 right-8 cursor-pointer'
-					onClick={closeSidebar}
+					onClick={onClose}
 				/>
 				<h3 className='leading-7 text-2xl'>
 					Bem-vindx ao<br />MyCalendar

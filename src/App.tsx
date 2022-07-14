@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 import { Header } from './components/Header'
-import { Sidebar } from './components/Sidebar'
 
 import { Home } from './pages/Home'
 
@@ -17,8 +16,6 @@ export function App() {
 
 						<Route path='*' element={<p>página não encontrada</p>} />
 					</Routes>
-
-					<Sidebar />
 				</main>
 			</div>
 		</BrowserRouter>
