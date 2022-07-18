@@ -14,10 +14,12 @@ export function ForgotPassword() {
 	async function handleForgotPasswordFormSubmit(event: FormEvent) {
 		event.preventDefault()
 
+		alert.show('Aguarde...', 'Processando sua solicitação')
+
 		try {
 			const data = await new PasswordsController().retrieve(email)
-			alert.show('Tudo certo!', data.message)
-			setTimeout(() => { navigate('/login') }, 5000)
+			alert.show('Tudo certo!', data.message, 4000)
+			setTimeout(() => { navigate('/login') }, 4000)
 		} catch (err: any) {
 			alert.show('Ocorreu um erro!', err.response.data.message)
 		}
