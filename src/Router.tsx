@@ -5,11 +5,14 @@ import { Header } from './components/Header'
 
 import { NotFound } from './pages/NotFound'
 import { Home } from './pages/Home'
+
 import { Login } from './pages/user/Login'
 import { Logout } from './pages/user/Logout'
 import { Register } from './pages/user/Register'
+
 import { ForgotPassword } from './pages/user/ForgotPassword'
 import { ResetPassword } from './pages/user/ResetPassword'
+import { ChangePassword } from './pages/user/ChangePassword'
 
 interface RouteProps {
 	E: () => JSX.Element
@@ -37,6 +40,7 @@ export function Router() {
 						<Route path='/reset_password/:id' element={<Public E={ResetPassword} />} />
 
 						<Route path='/logout' element={<Private E={Logout} />} />
+						<Route path='/change_password' element={<Private E={ChangePassword} />} />
 
 						<Route path='*' element={<NotFound />} />
 					</Routes>
