@@ -1,9 +1,9 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
-import { Input } from '../components/Input'
-import { UsersController } from '../controllers/UsersController'
-import { useAlert } from '../contexts/AlertContext'
+import { Input } from '../../components/Input'
+import { UsersController } from '../../controllers/UsersController'
+import { useAlert } from '../../contexts/AlertContext'
 
 interface CreateUserError {
 	name?: string

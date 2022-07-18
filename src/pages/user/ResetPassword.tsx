@@ -1,9 +1,9 @@
 import { FormEvent, useState } from "react"
 import { useParams, useNavigate } from "react-router-dom"
 
-import { Input } from '../components/Input'
-import { PasswordsController } from "../controllers/PasswordsController"
-import { useAlert } from '../contexts/AlertContext'
+import { Input } from '../../components/Input'
+import { PasswordsController } from "../../controllers/PasswordsController"
+import { useAlert } from '../../contexts/AlertContext'
 
 export function ResetPassword() {
 	const [password, setPassword] = useState('')

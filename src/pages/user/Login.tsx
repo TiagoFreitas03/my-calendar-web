@@ -1,10 +1,10 @@
 import { FormEvent, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 
-import { Input } from '../components/Input'
-import { UsersController } from '../controllers/UsersController'
-import { useAlert } from '../contexts/AlertContext'
-import { useAuth } from '../contexts/AuthContext'
+import { Input } from '../../components/Input'
+import { UsersController } from '../../controllers/UsersController'
+import { useAlert } from '../../contexts/AlertContext'
+import { useAuth } from '../../contexts/AuthContext'
 
 export function Login() {
 	const [email, setEmail] = useState('')
