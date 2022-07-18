@@ -5,11 +5,11 @@ import { Header } from './components/Header'
 
 import { NotFound } from './pages/NotFound'
 import { Home } from './pages/Home'
-import { Login } from './pages/Login'
-import { Logout } from './pages/Logout'
-import { Register } from './pages/Register'
-import { ForgotPassword } from './pages/ForgotPassword'
-import { ResetPassword } from './pages/ResetPassword'
+import { Login } from './pages/user/Login'
+import { Logout } from './pages/user/Logout'
+import { Register } from './pages/user/Register'
+import { ForgotPassword } from './pages/user/ForgotPassword'
+import { ResetPassword } from './pages/user/ResetPassword'
 
 interface RouteProps {
 	E: () => JSX.Element
