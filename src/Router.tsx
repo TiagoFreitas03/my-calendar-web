@@ -2,10 +2,13 @@ import { BrowserRouter, Routes, Route, Navigate,  } from 'react-router-dom'
 
 import { useAuth } from './contexts/AuthContext'
 import { Header } from './components/Header'
+
 import { Home } from './pages/Home'
 import { Login } from './pages/Login'
+import { Logout } from './pages/Logout'
 import { Register } from './pages/Register'
 import { ForgotPassword } from './pages/ForgotPassword'
+import { NotFound } from './pages/NotFound'
 
 interface RouteProps {
 	E: () => JSX.Element
@@ -14,9 +17,9 @@ interface RouteProps {
 export function Router() {
 	const { signed } = useAuth()
 
-	const PublicRoute = ({ E }: RouteProps) => signed ? <Navigate to={'/'} replace /> : <E />
+	const Public = ({ E }: RouteProps) => signed ? <Navigate to={'/'} replace /> : <E />
 
-	//const PrivateRoute = ({ E }: RouteProps) => signed ? <E /> : <Navigate to={'/login'} replace />
+	const Private = ({ E }: RouteProps) => signed ? <E /> : <Navigate to={'/login'} replace />
 
 	return (
 		<BrowserRouter>
@@ -27,11 +30,13 @@ export function Router() {
 					<Routes>
 						<Route path='/' element={<Home />} />
 
-						<Route path='/login' element={<PublicRoute E={Login} />} />
-						<Route path='/register' element={<PublicRoute E={Register} />} />
-						<Route path='/forgot_password' element={<PublicRoute E={ForgotPassword} />} />
+						<Route path='/login' element={<Public E={Login} />} />
+						<Route path='/register' element={<Public E={Register} />} />
+						<Route path='/forgot_password' element={<Public E={ForgotPassword} />} />
 
-						<Route path='*' element={<p>página não encontrada</p>} />
+						<Route path='/logout' element={<Private E={Logout} />} />
+
+						<Route path='*' element={<NotFound />} />
 					</Routes>
 				</main>
 			</div>
