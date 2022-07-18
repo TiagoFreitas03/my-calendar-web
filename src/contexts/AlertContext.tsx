@@ -34,7 +34,7 @@ export function AlertContextProvider({ children }: ContextProps) {
 
 	return (
 		<AlertContext.Provider value={{ show }}>
-			<div className="fixed flex justify-center bottom-8 left-8">
+			<div className="fixed flex justify-center bottom-8 left-8 mr-8">
 				{ message !== '' && title !== '' &&
 					<div
 						className="bg-gray-700 border border-gray-600 rounded-sm"
