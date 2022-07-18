@@ -17,8 +17,8 @@ export function ForgotPassword() {
 		alert.show('Aguarde...', 'Processando sua solicitação')
 
 		try {
-			const data = await new PasswordsController().retrieve(email)
-			alert.show('Tudo certo!', data.message, 4000)
+			const message = await new PasswordsController().retrieve(email)
+			alert.show('Tudo certo!', message, 4000)
 			setTimeout(() => { navigate('/login') }, 4000)
 		} catch (err: any) {
 			alert.show('Ocorreu um erro!', err.response.data.message)
