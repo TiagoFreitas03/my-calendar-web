@@ -30,10 +30,7 @@ export function Sidebar({ onClose: close }: SidebarProps) {
 
 	function CloseBtn() {
 		return (
-			<i
-				className='fa-solid fa-times fa-2x absolute top-8 right-8 cursor-pointer'
-				onClick={close}
-			/>
+			<i className='fas fa-times fa-2x absolute top-8 right-8 cursor-pointer' onClick={close} />
 		)
 	}
 
@@ -41,7 +38,7 @@ export function Sidebar({ onClose: close }: SidebarProps) {
 		return (
 			<Link
 				to={link}
-				className='border hover:bg-blue-500 p-2'
+				className='border hover:bg-blue-500 p-2 text-base'
 				onClick={close}
 			>
 				<i className={`mr-1 fa-solid fa-${icon}`} /> {text}
@@ -76,6 +73,7 @@ export function Sidebar({ onClose: close }: SidebarProps) {
 
 			{ user ?
 				<div>
+					<MenuLink icon='home' text='Página Inicial' link='/' />
 					<MenuLink icon='calendar-plus' text='Cadastrar Evento' link='/create_event' />
 					<MenuLink icon='calendar-days' text='Próximos Eventos' link='/next_events' />
 					<MenuLink icon='key' text='Alterar Senha' link='/change_password' />
