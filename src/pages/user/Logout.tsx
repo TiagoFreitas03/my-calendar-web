@@ -11,7 +11,7 @@ export function Logout() {
 		setTimeout(() => {
 			signOut()
 			navigate('/')
-		}, 3000)
+		}, 1000)
 	}, [])
 
 	return (
