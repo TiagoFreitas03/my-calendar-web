@@ -19,7 +19,15 @@ interface RouteProps {
 }
 
 export function Router() {
-	const { signed } = useAuth()
+	const { signed, loading } = useAuth()
+
+	if (loading) {
+		return (
+			<div className='h-[100vh] flex justify-center items-center'>
+				<h1>Carregando...</h1>
+			</div>
+		)
+	}
 
 	const Public = ({ E }: RouteProps) => signed ? <Navigate to={'/'} replace /> : <E />
 

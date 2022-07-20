@@ -9,6 +9,7 @@ interface ContextProps {
 interface AuthContextData {
 	token: string
 	signed: boolean
+	loading: boolean
 	signIn: (token: string) => void
 	signOut: () => void
 }
@@ -17,6 +18,7 @@ const AuthContext = createContext({} as AuthContextData)
 
 export function AuthContextProvider({ children }: ContextProps) {
 	const [token, setToken] = useState('')
+	const [loading, setLoading] = useState(true)
 
 	function saveLocalData(token: string) {
 		api.defaults.headers.common['Authorization'] = `Bearer ${token}`
@@ -29,6 +31,8 @@ export function AuthContextProvider({ children }: ContextProps) {
 
 		if (storagedToken)
 			saveLocalData(storagedToken)
+
+		setLoading(false)
 	}, [])
 
 	function signIn(token: string) {
@@ -45,7 +49,7 @@ export function AuthContextProvider({ children }: ContextProps) {
 	}
 
 	return (
-		<AuthContext.Provider value={{ token, signed: token !== '', signIn, signOut }}>
+		<AuthContext.Provider value={{ token, loading, signed: token !== '', signIn, signOut }}>
 			{ children }
 		</AuthContext.Provider>
 	)
