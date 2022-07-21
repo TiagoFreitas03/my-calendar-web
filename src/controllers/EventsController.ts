@@ -12,6 +12,11 @@ interface EventCreate {
 	labels_ids?: number[]
 }
 
+interface SearchEventResponse {
+	events: Event[]
+	pages: number
+}
+
 export class EventsController {
 	async create(data: EventCreate) {
 		const res = await api.post('event', data)
@@ -39,7 +44,7 @@ export class EventsController {
 
 		const res = await api.get(`event?${filters.join('&')}`)
 
-		return res.data as Event[]
+		return res.data as SearchEventResponse
 	}
 
 	async searchByReference(date: Date) {
