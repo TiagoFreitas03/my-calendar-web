@@ -1,6 +1,6 @@
-import { FormEvent, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { format } from "date-fns"
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 
 import { Input } from "../../components/Input"
 import { LabelsControl } from '../../components/LabelsControl'
@@ -28,7 +28,26 @@ export function Event() {
 	const [error, setError] = useState<CreateEventError>()
 
 	const { show } = useAlert()
+	const { id } = useParams<{ id: string }>()
 	const navigate = useNavigate()
+
+	useEffect(() => {
+		if (id) {
+			new EventsController().findById(id).then(data => {
+				setName(data.name)
+				setDescription(data.description)
+
+				setStart(data.startDate)
+				setStartTime(data.startTime)
+
+				setEnd(data.endDate)
+				setEndTime(data.endTime)
+
+				if (data.labels)
+					setLabels(data.labels)
+			})
+		}
+	}, [id])
 
 	async function handleCreateEventFormSubmit(event: FormEvent) {
 		event.preventDefault()
@@ -43,7 +62,13 @@ export function Event() {
 				labels_ids: labels.map(label => label.id)
 			}
 
-			const message = await new EventsController().create(data)
+			let message = ''
+			const controller = new EventsController()
+
+			if (!id)
+				message = await controller.create(data)
+			else
+				message = await controller.edit(data, id)
 
 			show('Tudo certo!', message, 4000)
 			navigate('/')
@@ -127,7 +152,7 @@ export function Event() {
 
 				<div className="flex gap-4 text-lg text-gray-50">
 					<button className="bg-blue-500 hover:bg-blue-600 py-2 px-8 rounded" type="submit">
-						Cadastrar
+						Confirmar
 					</button>
 
 					<Link className="bg-purple-500 hover:bg-purple-600 py-2 px-8 rounded" to='/'>
