@@ -14,6 +14,11 @@ import { ForgotPassword } from './pages/user/ForgotPassword'
 import { ResetPassword } from './pages/user/ResetPassword'
 import { ChangePassword } from './pages/user/ChangePassword'
 
+import { Event } from './pages/events/Event'
+import { NextEvents } from './pages/events/NextEvents'
+import { EventDetails } from './pages/events/EventDetails'
+import { CreateLabel } from './pages/CreateLabel'
+
 interface RouteProps {
 	E: () => JSX.Element
 }
@@ -49,6 +54,12 @@ export function Router() {
 
 						<Route path='/logout' element={<Private E={Logout} />} />
 						<Route path='/change_password' element={<Private E={ChangePassword} />} />
+
+						<Route path='/create_event' element={<Private E={Event} />} />
+						<Route path='/edit_event/:id' element={<Private E={Event} />} />
+						<Route path='/next_events' element={<Private E={NextEvents} />} />
+						<Route path='/event/:id' element={<Private E={EventDetails} />} />
+						<Route path='/create_label' element={<Private E={CreateLabel} />} />
 
 						<Route path='*' element={<NotFound />} />
 					</Routes>
