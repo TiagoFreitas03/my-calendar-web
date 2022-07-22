@@ -48,20 +48,24 @@ export function NextEvents() {
 				</div>
 			</div>
 
-			<Pagination current={page} total={totalPages} onChange={(pg) => setPage(pg)}>
-				{events.map(event => {
-					return (
-						<Link
-							key={event.id}
-							to={`/event/${event.id}`}
-							className="block rounded-md py-6 px-4 mb-4 border border-gray-500 hover:border-gray-300"
-						>
-							{event.name}
-							<span className="block text-xs mt-2 text-gray-300">{event.start}</span>
-						</Link>
-					)
-				})}
-			</Pagination>
+			{events.length > 0 ? (
+				<Pagination current={page} total={totalPages} onChange={(pg) => setPage(pg)}>
+					{events.map(event => {
+						return (
+							<Link
+								key={event.id}
+								to={`/event/${event.id}`}
+								className="block rounded-md py-6 px-4 mb-4 border border-gray-500 hover:border-gray-300"
+							>
+								{event.name}
+								<span className="block text-xs mt-2 text-gray-300">{event.start}</span>
+							</Link>
+						)
+					})}
+				</Pagination>
+			) : (
+				<p>Nenhum compromisso/evento encontrado.</p>
+			)}
 		</div>
 	)
 }
