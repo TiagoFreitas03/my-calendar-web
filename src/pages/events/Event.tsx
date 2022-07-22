@@ -86,7 +86,7 @@ export function Event() {
 
 	return (
 		<div className="px-8 py-6 w-full md:w-[720px] mx-auto">
-			<h1>Novo Evento</h1>
+			<h1>{ id ? 'Editar' : 'Novo' } Evento</h1>
 
 			<form className="mt-4" onSubmit={handleCreateEventFormSubmit}>
 				<Input
