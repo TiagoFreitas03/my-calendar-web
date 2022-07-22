@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 
 import { Label } from '../interfaces/Label'
 import { LabelsController } from '../controllers/LabelsController'
@@ -74,7 +75,9 @@ export function LabelsControl({ onChange: updateLabels }: LabelsControlProps) {
 					<>
 						<p>
 							Nenhuma etiqueta encontrada.
-							Clique <a href="#" className='text-blue-500'>aqui</a> para cadastrar.
+							Clique <Link to='/create_label' className='text-blue-500' target='_blank'>
+								aqui
+							</Link> para cadastrar.
 						</p>
 					</>
 				}
